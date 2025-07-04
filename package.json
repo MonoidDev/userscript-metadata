@@ -1,6 +1,6 @@
 {
-  "name": "userscript-metadata",
-  "version": "1.1.0",
+  "name": "@monoid-dev/userscript-metadata",
+  "version": "1.2.0",
   "description": "Parse, validate and stringify metadata in TypeScript.",
   "main": "dist/index",
   "scripts": {
@@ -19,12 +19,12 @@
   "license": "MIT",
   "repository": "https://github.com/SimonAlling/userscript-metadata",
   "devDependencies": {
+    "@types/babylon": "^6.16.9",
     "@types/escape-string-regexp": "^1.0.0",
     "@types/jest": "^27.0.1",
     "babel-cli": "^6.26.0",
     "babel-plugin-dynamic-import-node": "^2.0.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "escape-string-regexp": "^1.0.5",
     "jest": "^27.1.0",
     "renamer": "^4.0.0",
     "ts-jest": "^27.0.5",
@@ -41,8 +41,13 @@
     ]
   },
   "dependencies": {
-    "extract-comments": "^1.0.0",
+    "babel-extract-comments": "^1.0.0",
+    "babylon": "^6.18.0",
+    "escape-string-regexp": "^1.0.5",
     "is-ip": "^3.1.0",
     "is-valid-domain": "^0.1.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

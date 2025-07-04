@@ -1,4 +1,4 @@
-import extractComments from "extract-comments";
+import { parse } from "babylon";
 import { Either, Entry, Entries, Left, Right, isLeft } from "./types";
 import { START_TAG, END_TAG, TAG_PREFIX } from "./syntax";
 import { r } from "./common";
@@ -20,11 +20,10 @@ export type BlockParseResult = Either<ReadonlyArray<string>, Entries>
 type LineParseResult = Either<string, Entry>
 
 export function extractBlock(userscript: string): ExtractionResult {
-    const lineComments = (
-        extractComments(userscript)
-        .filter(c => c.type === "LineComment")
-        .map(c => c.raw)
-    );
+    const lineComments = (parse(userscript).comments as unknown as { type: string, value: string}[])
+        .filter(c => c.type === "CommentLine")
+        .map(c => c.value);
+
     if (lineComments.length === 0) {
         return Left(ExtractionError.NO_LINE_COMMENTS);
     } else {
