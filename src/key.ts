@@ -18,6 +18,7 @@ export const KEY = {
     require: "require",
     resource: "resource",
     run_at: "run-at",
+    tag: "tag",
     updateURL: "updateURL",
     version: "version",
 };

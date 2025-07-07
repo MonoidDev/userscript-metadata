@@ -3,6 +3,7 @@ import { DEFAULT_ITEMS, Kind } from "../src/index";
 import * as Msg from "../src/messages";
 import { readAndValidate, validateAndStringify, validateAndStringifyWith } from "../src/index";
 import {
+    METADATA_TAG,
     METADATA_TYPICAL,
     STRINGIFIED_TYPICAL,
 } from "./valid-example-metadata";
@@ -88,5 +89,21 @@ it("typical metadata with non-semver version is valid when version has no constr
     })(METADATA_WITH_WEIRD_VERSION)).toEqual(Right({
         stringified: STRINGIFIED_TYPICAL.replace(METADATA_TYPICAL.version, "Beta"),
         warnings: [],
+    }));
+});
+
+it("metadata with tags is valid", () => {
+    const ITEM_NAME = DEFAULT_ITEMS.name.withConstraints([
+        {
+            requirement: s => !(/\s/.test(s)),
+            message: Msg.whitespaceNotAllowed,
+        },
+    ]);
+    expect(validateAndStringifyWith()(METADATA_TAG)).toMatchObject(Right({
+        stringified: `// ==UserScript==
+// @name     Example Userscript
+// @version  1.0.0
+// @tag      example-tag
+// ==/UserScript==`
     }));
 });

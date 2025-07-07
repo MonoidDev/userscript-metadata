@@ -3,30 +3,27 @@ import { r } from "../src/common";
 export const METADATA_EMPTY = {} as const;
 
 export const METADATA_BASIC = {
-    "name": "Example Userscript",
-    "version": "1.0.0",
+  name: "Example Userscript",
+  version: "1.0.0",
 } as const;
 
 export const METADATA_BASIC_WITH_NOFRAMES = {
-    "name": "Example Userscript",
-    "version": "1.0.0",
-    "noframes": true,
+  name: "Example Userscript",
+  version: "1.0.0",
+  noframes: true,
 } as const;
 
 export const METADATA_RUN_AT = {
-    "name": "Example Userscript",
-    "run-at": "document-start",
+  name: "Example Userscript",
+  "run-at": "document-start",
 } as const;
 
 export const METADATA_TYPICAL = {
-    name: "Example Userscript",
-    version: "1.0.0",
-    noframes: true,
-    run_at: "document-start",
-    match: [
-        "*://*.example.com/*",
-        "*://*.github.com/*",
-    ],
+  name: "Example Userscript",
+  version: "1.0.0",
+  noframes: true,
+  run_at: "document-start",
+  match: ["*://*.example.com/*", "*://*.github.com/*"],
 } as const;
 
 export const STRINGIFIED_TYPICAL = r`
@@ -39,3 +36,9 @@ export const STRINGIFIED_TYPICAL = r`
 // @match     *://*.github.com/*
 // ==/UserScript==
 `.trim();
+
+export const METADATA_TAG = {
+  name: "Example Userscript",
+  version: "1.0.0",
+  tag: "example-tag",
+} as const;

@@ -1,10 +1,11 @@
 {
   "name": "@monoid-dev/userscript-metadata",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Parse, validate and stringify metadata in TypeScript.",
   "main": "dist/index",
   "scripts": {
     "build": "npm run clean && tsc && npm run rename && npm run commonjs",
+    "prepare": "npm run build",
     "clean": "rm -rf dist/*",
     "commonjs": "babel **/*.mjs --out-dir .",
     "rename": "renamer --force --find \"/\\.js$/\" --replace \".mjs\" \"dist/**\"",
@@ -17,7 +18,7 @@
   "sideEffects": false,
   "author": "Simon Alling",
   "license": "MIT",
-  "repository": "https://github.com/SimonAlling/userscript-metadata",
+  "repository": "https://github.com/MonoidDev/userscript-metadata",
   "devDependencies": {
     "@types/babylon": "^6.16.9",
     "@types/escape-string-regexp": "^1.0.0",
