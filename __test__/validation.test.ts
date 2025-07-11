@@ -135,10 +135,6 @@ it("an invalid @version value is caught", () => {
     expectInvalidValue(METADATA_INVALID_VERSION, "ersion");
 });
 
-it("an invalid @match value is caught", () => {
-    expectInvalidValue(METADATA_INVALID_MATCH, "@match");
-});
-
 it("an invalid @inject-into value is caught", () => {
     expectInvalidValue(METADATA_INVALID_INJECT_INTO, "content");
 });

@@ -1,6 +1,5 @@
 import { isValidConnectValue, validConnectValueRequired } from "./connect";
 import { BooleanItem, StringItem } from "./item";
-import { isMatchPattern, isIncludePattern_regex } from "./patterns";
 import { KEY } from "./key";
 import { Entries, Warning, WarningsGenerator } from "./types";
 import * as Msg from "./messages";
@@ -93,12 +92,6 @@ export const DEFAULT_ITEMS = {
     key: KEY.match,
     unique: false,
     required: false,
-    constraints: [
-      {
-        requirement: isMatchPattern,
-        message: Msg.validMatchPatternRequired,
-      },
-    ],
   }),
   name: new StringItem({
     key: KEY.name,
@@ -168,19 +161,6 @@ export const DEFAULT_WARNINGS: ReadonlyArray<WarningsGenerator> = [
           {
             summary: Msg.noMatchOrIncludeSummary,
             description: Msg.noMatchOrIncludeDescription,
-          },
-        ]
-      : [],
-  (entries) =>
-    entries.some(
-      (entry) =>
-        entry.key === KEY.include &&
-        !isIncludePattern_regex(entry.value as string)
-    )
-      ? [
-          {
-            summary: Msg.matchInsteadOfIncludeSummary,
-            description: Msg.matchInsteadOfIncludeDescription,
           },
         ]
       : [],
